@@ -14,17 +14,20 @@ const MagicButton = ({
   position,
   handleClick,
   otherClasses,
+  forForm,
 }: {
   title: string;
   icon: React.ReactNode;
   position: string;
   handleClick?: () => void;
   otherClasses?: string;
+  forForm?: boolean;
 }) => {
   return (
     <button
       className="relative inline-flex h-12 w-full md:w-60 md:mt-10 overflow-hidden rounded-lg p-[1px] focus:outline-none transition duration-150 active:scale-95 active:bg-slate-900"
       onClick={handleClick}
+      type={forForm ? "submit" : "button"}
     >
       <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
 

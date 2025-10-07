@@ -2,7 +2,7 @@ export const navItems = [
   { name: "Me", link: "#aboutme" },
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
+  { name: "Experience", link: "#experience" },
   { name: "Contact", link: "#contact" },
 ];
 
@@ -39,8 +39,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech ",
-    description: "I constantly try to improve",
+    title: "Tools I use",
+    description: "These are the ",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -185,35 +185,76 @@ export const companies = [
     nameImg: "/dockerName.svg",
   },
 ];
-
+/**
+ * Maintained existing office computer systems, including updates and troubleshooting
+ Added new features and applied fixes to resolve bugs and system issues
+ Entered and organized legislative records and resolutions
+ Provided technical support to co-workers and staff
+ Wordpress uploads and  updating pages for events.
+ */
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-    className: "md:col-span-2",
+    title: "Computer Programmer",
+    desc: "I maintained and updated office computer systems, handled troubleshooting and UI fixes, and added new features. Providing technical and hardware support to staff, managed WordPress uploads and event page updates, and edited photos for posters and other materials.",
+    className: "md:col-span-2 text-justify",
     thumbnail: "/exp1.svg",
+    year: "January 2025 - July 2025",
+    tech: [
+      "vb.net",
+      "WordPress",
+      "PHP",
+      "JQuery",
+      "Canva",
+      "Photoshop",
+      "MS Visual Studio",
+      "Sql Server",
+    ],
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    title: "IT Staff",
+    desc: "Handling data entry for legislative records in the legislative tracking system, ensuring older copies of resolutions are stored accurately and in compliance with the guidelines provided by my supervisor. Maintaining a high level of productivity by leveraging AI for noise cleaning and using macros for templating and formatting Excel spreadsheets.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
+    year: "January 2025 - July 2025",
+    tech: ["vb.net", "Excel", "Google Sheet", "Chatgpt", "Acrobat Reader"],
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    title: "Freelance Web Developer and Embedded Systems Projects",
+    desc: "Creating capstone research projects. Making IoT and embedded systems using esp32 and arduino, and Blynk IoT and Nextjs for frontend of IoT projects.",
+    tech: [
+      "PHP",
+      "Javascript",
+      "JQuery",
+      "Nodejs",
+      "Nextjs",
+      "Blynk IoT",
+      "Arduino",
+      "C++",
+      "Telegram",
+    ],
+    year: "2024 - Present",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp3.svg",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "n8n Automation Specialist",
+    desc: "Created automation for lead scraping and sending cold emails from scraping. Creating an automation for when the google drive detects a file being uploaded and then uploads it to facebook, instagram, twitter, and LinkedIn.  ",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
+    year: "July 2025 - September 2025",
+    tech: [
+      "JavaScript",
+      "n8n",
+      "ChatGPT",
+      "Gmail",
+      "LInkedIn",
+      "Google Drive",
+      "Google Sheets",
+    ],
   },
 ];
 
@@ -221,13 +262,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/JustMe1234567",
   },
-  {
-    id: 2,
-    img: "/twit.svg",
-  },
+  // {
+  //   id: 2,
+  //   img: "/twit.svg",
+  //   link: "#",
+  // },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/johnchloe",
   },
 ];

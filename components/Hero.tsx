@@ -8,7 +8,7 @@ import HeroTypewriter from "./ui/TypeWriterEffect";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-36" id="#hero">
+    <div className="lg:pb-20 pb-20 lg:pt-36 pt-20" id="#hero">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"

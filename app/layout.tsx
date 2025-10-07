@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Klowi's Portfolio",
   description: "John Chloe's Portfolio",
+  icons: {
+    icon: "Montserra.jpg", // default
+  },
 };
 
 export default function RootLayout({

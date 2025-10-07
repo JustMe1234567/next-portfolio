@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 // import animationData from "@/data/confetti.json";
 // import MagicButton from "../MagicButton";
 import Image from "next/image";
-import { FaCopy } from "react-icons/fa6";
 import { IoCopy } from "react-icons/io5";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
