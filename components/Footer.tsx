@@ -37,18 +37,26 @@ const Footer = () => {
     <footer className="w-full pt-20 pb-5 relative" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw] text-center">
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
+          Let&apos;s turn your
+          <span className="text-purple"> &#x201C;uhm&#x201D;</span> into
+          <span className="text-purple"> &#x201C;awe&#x201D;</span> hihi
         </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
+        <Image
+          src={"/mc.gif"}
+          alt="mc"
+          width={100}
+          height={100}
+          className="mt-5"
+        />
+        {/* <p className="text-white-200 md:mt-10 my-5 text-center">
           Reach out to me today and let&apos;s discuss how I can help you
           achieve your goals.
-        </p>
+        </p> */}
 
         {/* ✅ Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-lg flex flex-col gap-4 mt-6 z-50"
+          className="w-full max-w-lg  flex-col gap-4 mt-6 z-50 hidden"
         >
           <input
             type="text"

@@ -25,8 +25,7 @@ const RecentProjects = () => {
   return (
     <div className="py-20" id="projects">
       <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple ">recent projects</span>
+        A small selection of <span className="text-purple ">my works.</span>
       </h1>
 
       {/* ✅ Category Filter Buttons */}
@@ -74,20 +73,33 @@ const RecentProjects = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="p-4 rounded-2xl bg-card  shadow-md flex flex-col items-center justify-start lg:my-20 "
             >
-              <PinContainer title={item.title} href={item.link}>
-                <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[40vh] mb-6 ">
+              <PinContainer
+                title={item.title}
+                href={item.link}
+                target={item.target}
+              >
+                <div
+                  className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[25vh] lg:h-[35vh] mb-6 "
+                  id={item.id.toString()}
+                >
                   <div
-                    className="relative w-full h-full overflow-hidden lg:rounded-3xl"
+                    className="relative w-full h-full overflow-hidden lg:rounded-3xl "
                     style={{ backgroundColor: "#13162D" }}
                   >
-                    <Image width={100} height={100} src="/bg.png" alt="bgimg" />
+                    <Image
+                      width={900}
+                      height={900}
+                      src="/bg.png"
+                      alt="bgimg"
+                      className="h-full"
+                    />
                   </div>
                   <Image
-                    height={100}
-                    width={100}
+                    width={800}
+                    height={800}
                     src={item.img}
                     alt="cover"
-                    className="z-10 absolute bottom-0 rounded-lg"
+                    className="z-10 object-cover md:-mt-2 p-2 rotate-3 -bottom-1  absolute lg:-bottom-4 rounded-2xl h-full"
                   />
                 </div>
 
@@ -96,7 +108,7 @@ const RecentProjects = () => {
                 </h1>
 
                 <p
-                  className="lg:text-sm lg:font-normal font-light text-xs line-clamp-2"
+                  className="lg:text-sm lg:font-normal font-light text-xs line-clamp-none lg:line-clamp-5 text-justify"
                   style={{
                     color: "#BEC1DD",
                     margin: "1vh 0",
@@ -125,13 +137,14 @@ const RecentProjects = () => {
                       </div>
                     ))}
                   </div>
-
-                  <div className="flex justify-center items-center">
-                    <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                      Check Live Site
-                    </p>
-                    <FaLocationArrow className="ms-3" color="#CBACF9" />
-                  </div>
+                  {item.live && (
+                    <div className="flex justify-center items-center">
+                      <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                        Check Live Site
+                      </p>
+                      <FaLocationArrow className="ms-3" color="#CBACF9" />
+                    </div>
+                  )}
                 </div>
               </PinContainer>
             </motion.div>
