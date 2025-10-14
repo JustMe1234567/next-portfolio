@@ -116,13 +116,18 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+    title: "Cannabis Email And Automation Website",
+    des: "Translated a Figma design into a fully functional static website using HTML and CSS. Focused on precise layout implementation and desktop-specific optimization as per project guidelines.",
     img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "#4",
+    iconLists: [
+      "/cssLogo.svg",
+      "/tail.svg",
+      "/htmlLogo.svg",
+      "/netlifyLogo.svg",
+    ],
+    link: "https://lotus-assessment.netlify.app/",
     category: ["Three js"],
-    target: "none",
+    target: "_blank",
     live: true,
   },
 ];
