@@ -126,7 +126,7 @@ export const projects = [
       "/netlifyLogo.svg",
     ],
     link: "https://lotus-assessment.netlify.app/",
-    category: ["Three js"],
+    category: ["WordPress"],
     target: "_blank",
     live: true,
   },
