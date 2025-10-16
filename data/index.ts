@@ -117,7 +117,7 @@ export const projects = [
   {
     id: 4,
     title: "Cannabis Email And Automation Website",
-    des: "Translated a Figma design into a fully functional static website using HTML and CSS. Focused on precise layout implementation and desktop-specific optimization as per project guidelines.",
+    des: "Translated a Figma design into a fully functional static website using HTML and CSS for a WordPress frontend. Focused on precise layout implementation and desktop-specific optimization as per project guidelines.",
     img: "/cannabisAssessment.png",
     iconLists: [
       "/cssLogo.svg",
@@ -126,7 +126,7 @@ export const projects = [
       "/netlifyLogo.svg",
     ],
     link: "https://lotus-assessment.netlify.app/",
-    category: ["WordPress"],
+    category: ["WordPress", "Web Development"],
     target: "_blank",
     live: true,
   },
