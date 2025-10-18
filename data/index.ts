@@ -82,6 +82,39 @@ export const gridItems = [
 
 export const projects = [
   {
+    id: 3,
+    title: "MediCare Website",
+    des: "A fully responsive healthcare website faithfully recreated from a Figma design. Built with custom HTML and CSS in WordPress using Elementor, it delivers a pixel-perfect layout and smooth user experience. The site is served statically for fast loading and performance, combining modern aesthetics with efficient, lightweight code.",
+    img: "/medicareImg.jpg",
+    iconLists: [
+      "/cssLogo.svg",
+      "/tail.svg",
+      "/htmlLogo.svg",
+      "/netlifyLogo.svg",
+      "/elementor-icon.svg",
+    ],
+    link: "https://medicare101.netlify.app/",
+    category: ["Web Development", "Wordpress"],
+    target: "_blank",
+    live: true,
+  },
+  {
+    id: 4,
+    title: "Cannabis Email And Automation Website",
+    des: "Translated a Figma design into a fully functional static website using HTML and CSS for a WordPress frontend. Focused on precise layout implementation and desktop-specific optimization as per project guidelines.",
+    img: "/cannabisAssessment.png",
+    iconLists: [
+      "/cssLogo.svg",
+      "/tail.svg",
+      "/htmlLogo.svg",
+      "/netlifyLogo.svg",
+    ],
+    link: "https://lotus-assessment.netlify.app/",
+    category: ["WordPress", "Web Development"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 1,
     title: "Automatic Watering IoT System",
     des: "Built an IoT monitoring system using an ESP32 microcontroller integrated with Blynk IoT, enabling real-time viewing of sensor readings (e.g., [temperature, humidity, soil moisture, etc.]).",
@@ -102,33 +135,6 @@ export const projects = [
     category: ["IoT System", "Automation"],
     target: "none",
     live: false,
-  },
-  // {
-  //   id: 3,
-  //   title: "AI Image SaaS - Canva Application",
-  //   des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-  //   img: "/p3.svg",
-  //   iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-  //   link: "#3",
-  //   category: ["Web Development"],
-  //   target: "none",
-  //   live: false,
-  // },
-  {
-    id: 4,
-    title: "Cannabis Email And Automation Website",
-    des: "Translated a Figma design into a fully functional static website using HTML and CSS for a WordPress frontend. Focused on precise layout implementation and desktop-specific optimization as per project guidelines.",
-    img: "/cannabisAssessment.png",
-    iconLists: [
-      "/cssLogo.svg",
-      "/tail.svg",
-      "/htmlLogo.svg",
-      "/netlifyLogo.svg",
-    ],
-    link: "https://lotus-assessment.netlify.app/",
-    category: ["WordPress", "Web Development"],
-    target: "_blank",
-    live: true,
   },
 ];
 

@@ -55,7 +55,7 @@ const RecentProjects = () => {
           grid-cols-1
           md:grid-cols-2
           lg:grid-cols-3
-          lg:max-h-[550px]   /* ~2 rows (6 cards) desktop */
+          lg:max-h-full   /* ~2 rows (6 cards) desktop */
           max-h-[600px]      /* ~4 cards mobile */
           overflow-y-auto
           
