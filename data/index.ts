@@ -82,7 +82,7 @@ export const gridItems = [
 
 export const projects = [
   {
-    id: 3,
+    id: 1,
     title: "MediCare Website",
     des: "A fully responsive healthcare website faithfully recreated from a Figma design. Built with custom HTML and CSS in WordPress using Elementor, it delivers a pixel-perfect layout and smooth user experience. The site is served statically for fast loading and performance, combining modern aesthetics with efficient, lightweight code.",
     img: "/medicareImg.jpg",
@@ -99,7 +99,23 @@ export const projects = [
     live: true,
   },
   {
-    id: 4,
+    id: 2,
+    title: "Marci Realtor",
+    des: "A fully responsive real estate website replicated and enhanced to make it more user friendly and responsive. Built with tailwind css, html, and javascript. The site is serve statically and just a frontend.",
+    img: "/medicareImg.jpg",
+    iconLists: [
+      "/cssLogo.svg",
+      "/tail.svg",
+      "/htmlLogo.svg",
+      "/netlifyLogo.svg",
+    ],
+    link: "https://marcirealtor.netlify.app/",
+    category: ["Web Development"],
+    target: "_blank",
+    live: true,
+  },
+  {
+    id: 3,
     title: "Cannabis Email And Automation Website",
     des: "Translated a Figma design into a fully functional static website using HTML and CSS for a WordPress frontend. Focused on precise layout implementation and desktop-specific optimization as per project guidelines.",
     img: "/cannabisAssessment.png",
@@ -115,7 +131,7 @@ export const projects = [
     live: true,
   },
   {
-    id: 1,
+    id: 4,
     title: "Automatic Watering IoT System",
     des: "Built an IoT monitoring system using an ESP32 microcontroller integrated with Blynk IoT, enabling real-time viewing of sensor readings (e.g., [temperature, humidity, soil moisture, etc.]).",
     img: "/moistureiot.png",
@@ -126,7 +142,7 @@ export const projects = [
     live: false,
   },
   {
-    id: 2,
+    id: 5,
     title: "Water Quality Monitoring System",
     des: "Built an ESP32-based system integrated with Telegram Bot API to send and receive data. The bot alerts users when water quality is unsafe and restricts access to verified users only",
     img: "/qualiot.png",
