@@ -94,7 +94,7 @@ export const projects = [
       "/elementor-icon.svg",
     ],
     link: "https://medicare101.netlify.app/",
-    category: ["Web Development", "Wordpress"],
+    category: ["Web Development", "WordPress"],
     target: "_blank",
     live: true,
   },
