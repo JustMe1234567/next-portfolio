@@ -82,6 +82,23 @@ export const gridItems = [
 
 export const projects = [
   {
+    id: 6,
+    title: "Plant It Too",
+    des: "The Plant Shop project is a custom WordPress theme I built from scratch using PHP and Tailwind CSS. It features fully responsive design, custom Gutenberg blocks, and editable content areas powered by Advanced Custom Fields (ACF). The site includes a styled Google Maps integration and focuses on performance, clean design, and flexibility for easy content management.",
+    img: "/plantittoo.jpg",
+    iconLists: [
+      "/cssLogo.svg",
+      "/tail.svg",
+      "/htmlLogo.svg",
+      "/netlifyLogo.svg",
+      "/wordpress.svg",
+    ],
+    link: "https://plantittoo.free.nf/",
+    category: ["Web Development", "WordPress"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 1,
     title: "MediCare Website",
     des: "A fully responsive healthcare website faithfully recreated from a Figma design. Built with custom HTML and CSS in WordPress using Elementor, it delivers a pixel-perfect layout and smooth user experience. The site is served statically for fast loading and performance, combining modern aesthetics with efficient, lightweight code.",
@@ -91,7 +108,7 @@ export const projects = [
       "/tail.svg",
       "/htmlLogo.svg",
       "/netlifyLogo.svg",
-      "/elementor-icon.svg",
+      "/wordpress.svg",
     ],
     link: "https://medicare101.netlify.app/",
     category: ["Web Development", "WordPress"],
@@ -108,6 +125,7 @@ export const projects = [
       "/tail.svg",
       "/htmlLogo.svg",
       "/netlifyLogo.svg",
+      "/wordpress.svg",
     ],
     link: "https://marcirealtor.netlify.app/",
     category: ["Web Development"],
@@ -124,6 +142,7 @@ export const projects = [
       "/tail.svg",
       "/htmlLogo.svg",
       "/netlifyLogo.svg",
+      "/wordpress.svg",
     ],
     link: "https://lotus-assessment.netlify.app/",
     category: ["WordPress", "Web Development"],
