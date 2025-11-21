@@ -92,6 +92,7 @@ export const projects = [
       "/netlifyLogo.svg",
       "/wordpress.svg",
     ],
+    img: "/plantbuyimage.png",
     link: "https://plantbuy.free.nf/",
     category: ["Web Development", "WordPress"],
     target: "_blank",
@@ -135,7 +136,7 @@ export const projects = [
     id: 2,
     title: "Marci Realtor",
     des: "A fully responsive real estate website replicated and enhanced to make it more user friendly and responsive. Built with tailwind css, html, and javascript. The site is serve statically and just a frontend.",
-    img: "/medicareImg.jpg",
+    img: "/marciImg.png",
     iconLists: [
       "/cssLogo.svg",
       "/tail.svg",
