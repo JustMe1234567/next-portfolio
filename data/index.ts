@@ -82,6 +82,22 @@ export const gridItems = [
 
 export const projects = [
   {
+    id: 7,
+    title: "Plant Buy",
+    des: "A custom WordPress plant shop website built with my own classic theme, featuring Advanced Custom Fields, custom post types, and tailored taxonomies for structured, easy-to-manage content. The site includes fully designed single pages for each post type, an archive page, and a category page, all optimized for seamless navigation. With Ajax-powered filtering for fast, reload-free interactions and a mobile-responsive layout, the website delivers a smooth, modern, and highly functional user experience across all devices.",
+    iconLists: [
+      "/cssLogo.svg",
+      "/tail.svg",
+      "/htmlLogo.svg",
+      "/netlifyLogo.svg",
+      "/wordpress.svg",
+    ],
+    link: "https://plantbuy.free.nf/",
+    category: ["Web Development", "WordPress"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 6,
     title: "Plant It Too",
     des: "The Plant Shop project is a custom WordPress theme I built from scratch using PHP and Tailwind CSS. It features fully responsive design, custom Gutenberg blocks, and editable content areas powered by Advanced Custom Fields (ACF). The site includes a styled Google Maps integration and focuses on performance, clean design, and flexibility for easy content management.",
