@@ -283,12 +283,21 @@ export const workExperience = [
   },
   {
     id: 2,
-    title: "IT Staff",
-    desc: "Handling data entry for legislative records in the legislative tracking system, ensuring older copies of resolutions are stored accurately and in compliance with the guidelines provided by my supervisor. Maintaining a high level of productivity by leveraging AI for noise cleaning and using macros for templating and formatting Excel spreadsheets.",
+    title: "Web Developer",
+    desc: "Customized and developed WordPress themes to accurately match client-provided designs. Translated Figma and other design files into fully responsive web pages using Tailwind CSS or plain CSS. Implemented Google Analytics for SEO insights and used Tag Manager to track user activities and engagement. Built custom post types and integrated Advanced Custom Fields (ACF) to create flexible, scalable content structures tailored to each project’s needs.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
-    year: "January 2025 - July 2025",
-    tech: ["vb.net", "Excel", "Google Sheet", "Chatgpt", "Acrobat Reader"],
+    year: "Sept 2025 - Nov 2025",
+    tech: [
+      "WordPress",
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "Google Analytics",
+      "JavaScript",
+      "PHP",
+      "JQuery",
+    ],
   },
   {
     id: 3,
