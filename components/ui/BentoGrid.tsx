@@ -166,7 +166,7 @@ export const BentoGridItem = ({
           {id === 6 && (
             <div className="mt-5 lg:mt-0 z-11">
               <div className="flex justify-center items-center cursor-pointer">
-                <a href="/JohnChloe-Resume.pdf" title="Resume" target="_blank">
+                <a href="/wJohnChloe-Resume.pdf" title="Resume" target="_blank">
                   <MagicButton
                     title="Resume"
                     icon={<IoCopy />}
