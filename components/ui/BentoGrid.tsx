@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { IoCopy } from "react-icons/io5";
 import { BackgroundGradientAnimation } from "./GradientBg";
-import GridGlobe from "./GridGlobe";
 import MagicButton from "./MagicButton";
 
 export const BentoGrid = ({

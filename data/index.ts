@@ -6,6 +6,8 @@ export const navItems = [
   { name: "Contact", link: "#contact" },
 ];
 
+export const resumeLink = "wJohnChloe-Resume.pdf";
+
 export const about = {
   intro:
     "Hi, I'm John Chloe 👋. I help businesses turn ideas into powerful, user-friendly digital solutions. With a Bachelor's degree in Information Technology and hands-on experience in full-stack web development, automation, and embedded systems, I build websites and systems that don't just look great — they work great. My focus is on creating engaging, scalable, and results-driven solutions that help brands grow and stand out online.",
