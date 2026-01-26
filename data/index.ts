@@ -84,6 +84,17 @@ export const gridItems = [
 
 export const projects = [
   {
+    id: 8,
+    title: "Smart Agency",
+    des: "A landing page for a digital marketing agency built with Tailwind CSS and HTML. The design is modern and sleek, with a focus on showcasing the agency's services and portfolio. The site is fully responsive and optimized for performance, ensuring a smooth user experience across all devices.",
+    iconLists: ["/cssLogo.svg", "/tail.svg", "/htmlLogo.svg", "/wordpress.svg"],
+    img: "/smartagency.jpg",
+    link: "https://smartaigency.netlify.app",
+    category: ["Web Development"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 7,
     title: "Plant Buy",
     des: "A custom WordPress plant shop website built with my own classic theme, featuring Advanced Custom Fields, custom post types, and tailored taxonomies for structured, easy-to-manage content. The site includes fully designed single pages for each post type, an archive page, and a category page, all optimized for seamless navigation. With Ajax-powered filtering for fast, reload-free interactions and a mobile-responsive layout, the website delivers a smooth, modern, and highly functional user experience across all devices.",
