@@ -88,7 +88,7 @@ export const projects = [
     title: "MindBody Wellness WordPress Theme",
     des: "A modern, fully responsive WordPress theme for a psychiatric mental health practice built with Tailwind CSS v4 and GSAP animations. Features a custom interactive testimonials slider with drag/swipe functionality, animated statistics counters, and smooth scroll-triggered animations, all optimized for performance and mobile-first design.",
     iconLists: ["/wordpress.svg", "/tail.svg", "/jsLogo.svg", "/htmlLogo.svg"],
-    img: "/wellnesspathways.jpg",
+    img: "/wellnesspathways.png",
     link: "http://wellnesspathways.free.nf",
     category: ["Web Development", "WordPress"],
     target: "_blank",
