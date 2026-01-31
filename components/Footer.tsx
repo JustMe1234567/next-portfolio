@@ -19,7 +19,7 @@ const Footer = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -39,7 +39,7 @@ const Footer = () => {
         <h1 className="heading lg:max-w-[45vw] text-center">
           Let&apos;s turn your
           <span className="text-purple"> &#x201C;uhm&#x201D;</span> into
-          <span className="text-purple"> &#x201C;awe&#x201D;</span> hihi
+          <span className="text-purple"> &#x201C;awe&#x201D;</span>
         </h1>
         <Image
           src={"/mc.gif"}
