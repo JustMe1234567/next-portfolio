@@ -106,7 +106,7 @@ export const projects = [
       "jsLogo.svg",
     ],
     img: "/smartagency.jpg",
-    link: "https://smartaigency.netlify.app",
+    link: "https://http://smartagency.infinityfree.me/",
     category: ["Web Development"],
     target: "_blank",
     live: true,
