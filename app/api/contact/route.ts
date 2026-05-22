@@ -35,32 +35,51 @@ export async function POST(request: Request) {
     );
   }
 
+  const payload = new URLSearchParams({
+    name: name.trim(),
+    email: email.trim(),
+    platform: platform?.trim() || "Not specified",
+    message: message.trim(),
+  });
+
   try {
     const res = await fetch(scriptUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: name.trim(),
-        email: email.trim(),
-        platform: platform?.trim() || "Not specified",
-        message: message.trim(),
-      }),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: payload.toString(),
+      redirect: "follow",
     });
 
     const text = await res.text();
-    let data: { success?: boolean; message?: string };
+
+    if (text.includes("<!DOCTYPE html") || text.includes("<html")) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Google Script access denied. Redeploy your web app with “Who has access” set to Anyone (see GOOGLE_SHEETS_SETUP.md).",
+        },
+        { status: 502 }
+      );
+    }
+
+    let data: { success?: boolean; message?: string } = {};
 
     try {
       data = JSON.parse(text);
     } catch {
-      data = { success: res.ok };
+      if (res.ok) {
+        return NextResponse.json({ success: true });
+      }
     }
 
     if (!res.ok || data.success === false) {
       return NextResponse.json(
         {
           success: false,
-          message: data.message || "Failed to save to spreadsheet.",
+          message:
+            data.message ||
+            "Failed to save to spreadsheet. Redeploy Apps Script as Web app → Anyone.",
         },
         { status: 502 }
       );

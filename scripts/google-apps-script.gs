@@ -1,29 +1,49 @@
 /**
- * GOOGLE SHEETS CONTACT FORM — Setup
+ * GOOGLE SHEETS CONTACT FORM
  *
- * 1. Create a new Google Sheet (e.g. "Portfolio Inquiries")
- * 2. Row 1 headers (optional): Timestamp | Name | Email | Platform | Message
- * 3. Extensions → Apps Script → paste this file → Save
- * 4. Deploy → New deployment → Type: Web app
+ * SETUP (important — fixes "Failed to save" / 403 errors):
+ * 1. Create a Google Sheet, open Extensions → Apps Script
+ * 2. Paste this code, Save
+ * 3. Deploy → New deployment → Web app
  *    - Execute as: Me
- *    - Who has access: Anyone
- * 5. Copy the Web app URL → paste into .env.local as GOOGLE_SCRIPT_URL
- * 6. Restart: npm run dev
- * 7. On Vercel: add GOOGLE_SCRIPT_URL in Environment Variables → redeploy
+ *    - Who has access: Anyone   ← must be "Anyone", not "Only myself"
+ * 4. Authorize when prompted
+ * 5. Copy the /exec URL → GOOGLE_SCRIPT_URL in .env.local
+ * 6. After ANY code change: Deploy → Manage deployments → Edit → New version → Deploy
  */
 
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
+    var name = "";
+    var email = "";
+    var platform = "";
+    var msg = "";
 
-    sheet.appendRow([
-      new Date(),
-      data.name || "",
-      data.email || "",
-      data.platform || "",
-      data.message || "",
-    ]);
+    if (e.postData && e.postData.contents) {
+      var contentType = e.postData.type || "";
+
+      if (contentType.indexOf("application/json") > -1) {
+        var json = JSON.parse(e.postData.contents);
+        name = json.name || "";
+        email = json.email || "";
+        platform = json.platform || "";
+        msg = json.message || "";
+      } else {
+        var params = e.parameter;
+        name = params.name || "";
+        email = params.email || "";
+        platform = params.platform || "";
+        msg = params.message || "";
+      }
+    } else if (e.parameter) {
+      name = e.parameter.name || "";
+      email = e.parameter.email || "";
+      platform = e.parameter.platform || "";
+      msg = e.parameter.message || "";
+    }
+
+    sheet.appendRow([new Date(), name, email, platform, msg]);
 
     return ContentService.createTextOutput(
       JSON.stringify({ success: true })
@@ -35,7 +55,6 @@ function doPost(e) {
   }
 }
 
-/** Optional: run once in Apps Script to add header row */
 function setupHeaders() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   if (sheet.getLastRow() === 0) {
