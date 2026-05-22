@@ -1,179 +1,104 @@
 "use client";
 
-import { projects } from "@/data";
+import ProjectCard from "@/components/ProjectCard";
+import { projectFilters, projects } from "@/data";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
-import { useState } from "react";
-import { FaLocationArrow } from "react-icons/fa6";
-import { PinContainer } from "./ui/3dPin";
+import { useMemo, useState } from "react";
+import CtaButton from "./ui/CtaButton";
+import { Section } from "./ui/Section";
+import { SectionHeader } from "./ui/SectionHeader";
 
 const RecentProjects = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] =
+    useState<(typeof projectFilters)[number]>("All");
 
-  // ✅ generate category list dynamically
-  const categories = [
-    "All",
-    ...Array.from(new Set(projects.flatMap((p) => p.category))),
-  ];
-
-  // ✅ filter projects by category
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category.includes(activeCategory));
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects;
+    return projects.filter((p) => p.category.includes(activeCategory));
+  }, [activeCategory]);
 
   return (
-    <div className="py-20" id="projects">
-      <h1 className="heading">
-        A small selection of <span className="text-purple ">my works.</span>
-      </h1>
+    <Section id="projects" aria-labelledby="projects-heading" divider>
+      <div className="section-stack">
+        <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeader
+            label="Projects"
+            title="Selected work"
+            description="WordPress themes and front-end builds for agencies and businesses."
+            titleId="projects-heading"
+            align="left"
+            className="max-w-lg !mx-0"
+          />
 
-      {/* ✅ Category Filter Buttons */}
-      <div className="flex flex-wrap justify-center  gap-1 md:gap-3 sm:gap-2 mt-10 text-xs md:text-lg">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`md:px-5 px-3 py-1 md:py-2 sm:px-3 sm:py-2 justify-center rounded-lg font-medium transition 
-              ${
-                activeCategory === cat
-                  ? "bg-purple-600 text-white shadow-md scale-95"
-                  : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-              }
-            `}
+          <div
+            className="flex flex-wrap gap-2"
+            role="tablist"
+            aria-label="Filter projects"
           >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* ✅ Scrollable Projects Grid */}
-      <div
-        className={`
-          mt-10 p-4
-          grid gap-6
-          grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          lg:max-h-full   /* ~2 rows (6 cards) desktop */
-          max-h-[600px]      /* ~4 cards mobile */
-          overflow-y-auto
-          
-          overflow-x-hidden
-          custom-scroll
-        `}
-      >
-        <AnimatePresence>
-          {filteredProjects.map((item) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="p-4 rounded-2xl bg-card  shadow-md flex flex-col items-center justify-start lg:my-20 "
-            >
-              <PinContainer
-                title={item.title}
-                href={item.link}
-                target={item.target}
+            {projectFilters.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === cat ? "true" : "false"}
+                onClick={() => setActiveCategory(cat)}
+                className={cn(
+                  "rounded-full border px-3.5 py-2 text-xs font-medium transition sm:text-sm",
+                  activeCategory === cat
+                    ? "border-purple bg-purple text-black-100 shadow-sm shadow-purple/20"
+                    : "border-purple/20 text-white-200 hover:border-purple/40 hover:bg-purple/10 hover:text-purple"
+                )}
               >
-                <div
-                  className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[25vh] lg:h-[35vh] mb-6 "
-                  id={item.id.toString()}
-                >
-                  <div
-                    className="relative w-full h-full overflow-hidden lg:rounded-3xl "
-                    style={{ backgroundColor: "#13162D" }}
-                  >
-                    <Image
-                      width={900}
-                      height={900}
-                      src="/bg.png"
-                      alt="bgimg"
-                      className="h-full"
-                    />
-                  </div>
-                  <Image
-                    width={800}
-                    height={800}
-                    src={item.img}
-                    alt="cover"
-                    className="z-10 object-cover md:-mt-2 p-2 rotate-3 -bottom-1  absolute lg:-bottom-4 rounded-2xl h-full"
-                  />
-                </div>
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
 
-                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                  {item.title}
-                </h1>
-
-                <p
-                  className="lg:text-sm lg:font-normal font-light text-xs line-clamp-none lg:line-clamp-5 text-justify"
-                  style={{
-                    color: "#BEC1DD",
-                    margin: "1vh 0",
-                  }}
-                >
-                  {item.des}
-                </p>
-
-                <div className="flex items-center justify-between mt-5">
-                  <div className="flex items-center">
-                    {item.iconLists.map((icon, index) => (
-                      <div
-                        key={index}
-                        className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                        style={{
-                          transform: `translateX(-${5 * index + 2}px)`,
-                        }}
-                      >
-                        <Image
-                          width={100}
-                          height={100}
-                          src={icon}
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  {item.live && (
-                    <div className="flex justify-center items-center">
-                      <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                        Check Live Site
-                      </p>
-                      <FaLocationArrow className="ms-3" color="#CBACF9" />
-                    </div>
-                  )}
-                </div>
-              </PinContainer>
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className={cn(
+                "projects-grid-scroll overflow-y-auto overflow-x-hidden rounded-xl border border-white/[0.06] sm:rounded-2xl",
+                "max-h-[420px] sm:max-h-[460px] lg:max-h-[500px]"
+              )}
+            >
+              <ul className="grid list-none grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:gap-4 sm:p-4 lg:grid-cols-3">
+                {filteredProjects.length === 0 ? (
+                  <li className="col-span-full py-10 text-center text-sm text-white-200">
+                    No projects in this category.
+                  </li>
+                ) : (
+                  filteredProjects.map((project) => (
+                    <li key={project.id} className="min-w-0">
+                      <ProjectCard project={project} />
+                    </li>
+                  ))
+                )}
+              </ul>
             </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
+          </AnimatePresence>
 
-      {/* ✅ Custom Scrollbar - hidden until hover */}
-      <style jsx global>{`
-        .custom-scroll::-webkit-scrollbar {
-          width: 8px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-          background-color: hsl(var(--foreground) / 0.3);
-          border-radius: 9999px;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        .custom-scroll:hover::-webkit-scrollbar-thumb {
-          opacity: 1;
-        }
-        .dark .custom-scroll::-webkit-scrollbar-thumb {
-          background-color: hsl(var(--foreground) / 0.5);
-        }
-      `}</style>
-    </div>
+          {filteredProjects.length > 4 && (
+            <p className="mt-2 text-center text-[10px] text-white/35">
+              Scroll for more
+            </p>
+          )}
+        </div>
+
+        <div className="flex justify-center">
+          <CtaButton href="/contact" variant="secondary">
+            Discuss your project
+          </CtaButton>
+        </div>
+      </div>
+    </Section>
   );
 };
 

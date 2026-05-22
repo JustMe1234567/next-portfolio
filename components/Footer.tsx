@@ -1,140 +1,129 @@
 "use client";
 
-import { socialMedia } from "@/data";
+import { footerPhrase, site, socialMedia } from "@/data";
 import Image from "next/image";
-import { useState } from "react";
-import {
-  FaEnvelope,
-  FaLocationArrow,
-  FaLocationPin,
-  FaPhone,
-} from "react-icons/fa6";
-import MagicButton from "./ui/MagicButton";
+import { FaEnvelope, FaLocationPin } from "react-icons/fa6";
+import CtaButton from "./ui/CtaButton";
+import { Section } from "./ui/Section";
+
+const contactLinks = [
+  {
+    id: "whatsapp",
+    href: site.whatsapp,
+    label: site.phone,
+    icon: (
+      <Image src="/wha.svg" alt="" width={20} height={20} className="h-5 w-5" />
+    ),
+    external: true,
+  },
+  {
+    id: "email",
+    href: `mailto:${site.email}`,
+    label: site.email,
+    icon: <FaEnvelope className="h-4 w-4 shrink-0 text-purple" aria-hidden />,
+    external: false,
+  },
+  {
+    id: "location",
+    href: undefined,
+    label: site.location,
+    icon: <FaLocationPin className="h-4 w-4 shrink-0 text-purple" aria-hidden />,
+    external: false,
+  },
+] as const;
 
 const Footer = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    alert("Message sent!");
-
-    // ✅ Clear inputs
-    setForm({ name: "", email: "", message: "" });
-  };
-
   return (
-    <footer className="w-full pt-20 pb-5 relative" id="contact">
-      <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw] text-center">
-          Let&apos;s turn your
-          <span className="text-purple"> &#x201C;uhm&#x201D;</span> into
-          <span className="text-purple"> &#x201C;awe&#x201D;</span>
-        </h1>
-        <Image
-          src={"/mc.gif"}
-          alt="mc"
-          width={100}
-          height={100}
-          className="mt-5"
-        />
-        {/* <p className="text-white-200 md:mt-10 my-5 text-center">
-          Reach out to me today and let&apos;s discuss how I can help you
-          achieve your goals.
-        </p> */}
+    <Section id="contact" divider className="!pb-8">
+      <div className="section-stack mx-auto max-w-3xl">
+        <div className="card-surface rounded-2xl border border-white/[0.08] p-6 text-center sm:p-8">
+          <div className="flex flex-col items-center gap-5 sm:gap-6">
+            <h2 className="text-xl font-bold leading-snug text-pretty sm:text-2xl md:text-3xl">
+              {footerPhrase.before}{" "}
+              <span className="text-purple">&ldquo;{footerPhrase.from}&rdquo;</span>{" "}
+              into{" "}
+              <span className="text-purple">&ldquo;{footerPhrase.to}&rdquo;</span>
+            </h2>
 
-        {/* ✅ Contact Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-lg  flex-col gap-4 mt-6 z-50 hidden"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            className="px-4 py-3 rounded-lg bg-black-200 text-white border border-black-300 outline-none"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="px-4 py-3 rounded-lg bg-black-200 text-white border border-black-300 outline-none"
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            value={form.message}
-            onChange={handleChange}
-            required
-            className="px-4 py-3 rounded-lg bg-black-200 text-white border border-black-300 outline-none resize-none"
-          />
-
-          {/* ✅ Magic Button as Submit */}
-          <div className="self-center mt-2">
-            <MagicButton
-              title="Send Message"
-              icon={<FaLocationArrow />}
-              position="right"
-              forForm={true}
-              className="active:scale-95 transition-transform duration-150" // ✅ Click animation
+            <Image
+              src="/mc.gif"
+              alt=""
+              width={100}
+              height={100}
+              unoptimized
+              className="h-16 w-16 object-contain sm:h-20 sm:w-20"
             />
+
+            <p className="text-sm text-white-200">
+              WordPress, Shopify, or Webflow—let&apos;s talk on the contact page.
+            </p>
+
+            <CtaButton href="/contact" variant="primary" className="w-full sm:w-auto">
+              Go to contact
+            </CtaButton>
           </div>
-        </form>
-      </div>
-      <div
-        className="flex items-center md:gap-3 gap-6 mt-20 md:mt-0 justify-center lg:mt-10"
-        id="footer"
-      >
-        {socialMedia.map((info) => (
-          <div
-            key={info.id}
-            className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
-          >
-            <a href={info.link} title={info.link} target="_blank">
-              <Image src={info.img} alt="icons" width={30} height={30} />
-            </a>
-          </div>
-        ))}
-      </div>
-      <div className="flex text-sm font-light lg:mt-5 mt-5  md:flex-row flex-col justify-between items-center gap-1">
-        <p className="  font-light hidden lg:inline-block ">
-          All Rights Reserved | Copyright © 2025 John Chloe
-        </p>
-        <div className="flex  justify-center items-center gap-2">
-          <FaPhone />
-          +63 9108755326
-        </div>
-        <div className="flex flex-row justify-center items-center gap-2">
-          <FaEnvelope />
-          johnchloe.h.gomandoy@gmail.com
-        </div>
-        <div className="flex flex-row justify-center items-center gap-2">
-          <FaLocationPin />
-          Misamis Occidental - Philippines
         </div>
 
-        <p className="md:text-base text-sm md:font-normal font-light lg:hidden lg:pt-0 pt-2">
-          All Rights Reserved | Copyright © 2025 John Chloe
-        </p>
+        <div className="flex justify-center gap-3">
+          {socialMedia.map((info) => (
+            <a
+              key={info.id}
+              href={info.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple/20 bg-black-200 transition hover:border-purple/50 hover:bg-purple/10"
+              aria-label={info.link}
+            >
+              <Image src={info.img} alt="" width={22} height={22} />
+            </a>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-white/[0.06] pt-6 sm:gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+            {contactLinks.map((item) => {
+              const inner = (
+                <>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-purple/20 bg-purple/5">
+                    {item.icon}
+                  </span>
+                  <span className="text-xs sm:text-sm text-white-200 group-hover:text-purple transition-colors truncate max-w-[200px] sm:max-w-none">
+                    {item.label}
+                  </span>
+                </>
+              );
+
+              if (!item.href) {
+                return (
+                  <div
+                    key={item.id}
+                    className="inline-flex items-center gap-3 px-1"
+                  >
+                    {inner}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="group inline-flex items-center gap-3 rounded-lg px-1 py-1 transition hover:bg-purple/5"
+                >
+                  {inner}
+                </a>
+              );
+            })}
+          </div>
+
+          <p className="text-center text-xs text-white-200/60">
+            © {new Date().getFullYear()} {site.name}
+          </p>
+        </div>
       </div>
-    </footer>
+    </Section>
   );
 };
 

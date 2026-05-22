@@ -1,4 +1,6 @@
 "use client";
+
+import { site } from "@/data";
 import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
@@ -6,85 +8,118 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import CtaButton from "./CtaButton";
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", `#${id}`);
+  }
+}
+
+function NavLink({ link, name }: { link: string; name: string }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHash = link.startsWith("#") || link.startsWith("/#");
+  const sectionId = link.replace(/^\/#/, "").replace(/^#/, "");
+
+  if (isHash) {
+    return (
+      <a
+        href={`/#${sectionId}`}
+        className="nav-link whitespace-nowrap"
+        onClick={(e) => {
+          e.preventDefault();
+          if (pathname === "/") {
+            scrollToSection(sectionId);
+          } else {
+            router.push(`/#${sectionId}`);
+          }
+        }}
+      >
+        {name}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={link} className="nav-link whitespace-nowrap">
+      {name}
+    </Link>
+  );
+}
 
 export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-  }[];
+  navItems: { name: string; link: string }[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
-
-  // set true for the initial state so that nav bar is visible in the hero section
   const [visible, setVisible] = useState(true);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
-    // Check if current is not undefined and is a number
     if (typeof current === "number") {
       const direction = current! - scrollYProgress.getPrevious()!;
-
       if (scrollYProgress.get() < 0.005) {
-        // also set true for the initial state
         setVisible(true);
       } else {
-        if (direction < 0) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(direction < 0);
       }
     }
   });
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div
-        initial={{
-          opacity: 1,
-          y: -100,
-        }}
-        animate={{
-          y: visible ? 0 : -100,
-          opacity: visible ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.2,
-        }}
+      <motion.header
+        initial={{ opacity: 1, y: -100 }}
+        animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
         className={cn(
-          // change rounded-full to rounded-lg
-          // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
-          // change  pr-2 pl-8 py-2 to px-10 py-5
-          "flex max-w-fit md:min-w-[70vw] lg:max-h-15 lg:min-w-fit fixed z-[5000] top-5 lg:top-10 inset-x-0 mx-auto px-8 py-4 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-4 transition duration-200",
+          "fixed z-[5000] top-3 sm:top-5 inset-x-3 sm:inset-x-4 md:inset-x-6 lg:inset-x-auto lg:left-1/2 lg:-translate-x-1/2 lg:max-w-4xl lg:w-full",
           className
         )}
-        style={{
-          backdropFilter: "blur(16px) saturate(180%)",
-          backgroundColor: "rgba(17, 25, 40, 0.75)",
-          borderRadius: "12px",
-          border: "1px solid rgba(255, 255, 255, 0.125)",
-        }}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        <div className="flex items-center justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-white/10 bg-black-200/90 px-3 py-2 shadow-lg shadow-black/40 backdrop-blur-xl sm:px-5 sm:py-2.5">
           <Link
-            key={`link=${idx}`}
-            href={navItem.link}
-            className={cn(
-              "relative flex items-center space-x-1 text-neutral-600 dark:text-neutral-50 transition-colors duration-200",
-              "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-purple-500 after:transition-all after:duration-300 hover:after:w-full"
-            )}
+            href="/"
+            className="group flex min-w-0 shrink-0 items-center gap-2 sm:gap-2.5"
           >
-            <span className=" text-sm !cursor-pointer md:text-lg ">
-              {navItem.name}
+            <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full ring-2 ring-purple/30 transition group-hover:ring-purple sm:h-9 sm:w-9">
+              <Image
+                src={site.profileImage}
+                alt={site.name}
+                width={72}
+                height={72}
+                className="h-full w-full object-cover"
+              />
+            </span>
+            <span className="hidden truncate font-semibold text-sm text-white transition group-hover:text-purple min-[400px]:inline sm:text-base">
+              {site.name}
             </span>
           </Link>
-        ))}
-      </motion.div>
+
+          <nav className="flex items-center gap-3 sm:gap-5 lg:gap-7">
+            {navItems.map((item, idx) => (
+              <NavLink key={idx} link={item.link} name={item.name} />
+            ))}
+          </nav>
+
+          <CtaButton
+            href="/contact"
+            variant="primary"
+            className="!min-h-0 shrink-0 !py-2 !px-3 !text-xs sm:!py-2.5 sm:!px-4 sm:!text-sm"
+          >
+            Hire me
+          </CtaButton>
+        </div>
+      </motion.header>
     </AnimatePresence>
   );
 };

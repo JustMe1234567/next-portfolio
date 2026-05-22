@@ -16,10 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Klowi's Portfolio",
-  description: "John Chloe's Portfolio",
+  title: "John Chloe | WordPress, Shopify & Webflow Developer",
+  description:
+    "Hire John Chloe for WordPress custom themes, Shopify storefront work, and Webflow development. Agency-friendly communication, clear process, and conversion-focused builds.",
   icons: {
-    icon: "Montserra.jpg", // default
+    icon: "Montserra.jpg",
   },
 };
 

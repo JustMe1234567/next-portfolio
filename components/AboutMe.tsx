@@ -1,67 +1,63 @@
-import { about } from "@/data";
-import { cn } from "@/lib/utils";
+import { about, platforms } from "@/data";
 import Image from "next/image";
-import React from "react";
+import CtaButton from "./ui/CtaButton";
+import { Section } from "./ui/Section";
+import { SectionHeader } from "./ui/SectionHeader";
 
 const AboutMe = () => {
   return (
-    <div className="pb-20 sm:pt-14 md:pt-36" id="aboutme">
-      <div className="relative">
-        <div className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.2] bg-grid-black-100/[0.2] flex items-center justify-center absolute top-0 left-0 rounded-b-full">
-          <div
-            className={cn(
-              "absolute inset-0",
-              "[background-size:150px_150px]",
-              "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-              "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
-            )}
+    <Section id="aboutme" divider>
+      <div className="section-stack">
+        <SectionHeader
+          label="About"
+          title="CMS developer for hire"
+          description="WordPress, Shopify, and Webflow—shipped on time, built to last."
+        />
+
+        <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5 sm:gap-6">
+          <Image
+            src={about.image}
+            alt="John Chloe profile"
+            width={800}
+            height={800}
+            className="h-32 w-32 rounded-2xl object-cover shadow-lg ring-2 ring-purple/20 sm:h-40 sm:w-40"
           />
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(circle_at_center,transparent_2,black)] dark:bg-black-100"></div>
-        </div>
 
-        <div className="bg-black-100 absolute w-full h-10"></div>
-        {/* Display texts */}
-        <div className="w-full h-screen flex justify-center relative z-10 py-16">
-          <div className="w-full max-w-5xl flex flex-col items-center px-6">
-            {/* Header */}
-            <h2 className="text-4xl font-bold text-center mb-25">About Me</h2>
+          <p className="text-center text-sm leading-relaxed text-white-200 sm:text-base">
+            {about.intro}
+          </p>
 
-            {/* Container for pic and intro */}
-            <div className="grid grid-cols-1 md:gap-x-12 md:grid-cols-2 items-center w-full">
-              {/* Pic */}
-              <div className="flex justify-center">
-                <Image
-                  src={about.image}
-                  alt="Profile"
-                  width={800}
-                  height={800}
-                  className="md:w-[300px] md:h-[300px] h-[200px] w-[200px] rounded-[10px] bg-black-100 md:rounded-lg shadow-xl "
-                />
-              </div>
-
-              {/* Text */}
-              <div className="flex flex-col gap-4 text-center md:text-left ">
-                <p className="text-gray-300 text-justify bg-black-100 md:text-lg md:mt-7 mt-10 indent-10">
-                  {about.intro}
-                </p>
-
-                {/* Stats section */}
-                <div className="grid grid-cols-4 gap-4 mt-6">
-                  {about.stats.map((stat, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                      <span className="text-2xl font-bold">{stat.number}+</span>
-                      <span className="text-sm text-gray-400">
-                        {stat.title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-wrap justify-center gap-2">
+            {platforms.map((p) => (
+              <span
+                key={p.name}
+                className="rounded-full border border-purple/30 bg-purple/10 px-3 py-1 text-xs font-medium text-purple"
+              >
+                {p.name}
+              </span>
+            ))}
           </div>
+
+          <div className="grid w-full max-w-md grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+            {about.stats.map((stat, index) => (
+              <div key={index} className="flex flex-col items-center gap-0.5">
+                <span className="text-xl font-bold tabular-nums sm:text-2xl">
+                  {stat.number}
+                  {"suffix" in stat ? stat.suffix : "+"}
+                </span>
+                <span className="text-center text-[11px] text-gray-400 sm:text-xs">
+                  {stat.title}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <CtaButton href="/contact" variant="primary">
+            Hire me
+          </CtaButton>
         </div>
       </div>
-    </div>
+    </Section>
   );
 };
 

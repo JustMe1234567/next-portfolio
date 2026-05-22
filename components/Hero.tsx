@@ -1,71 +1,53 @@
+import { hero } from "@/data";
 import { cn } from "@/lib/utils";
-import React from "react";
-import { FaLocationArrow } from "react-icons/fa6";
-import MagicButton from "./ui/MagicButton";
+import CtaButton from "./ui/CtaButton";
 import { Spotlight } from "./ui/Spotlight";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import HeroTypewriter from "./ui/TypeWriterEffect";
 
 const Hero = () => {
   return (
-    <div
-      className="lg:pb-20 pb-20 lg:pt-36 pt-20 transition-all duration-200"
-      id="#hero"
-    >
-      <div>
+    <section className="relative flex min-h-[min(88svh,820px)] items-center pt-20 pb-12 sm:pt-24 sm:pb-14">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Spotlight
-          className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+          className="-top-40 -left-10 md:-left-32 md:-top-20 h-[70vh]"
           fill="white"
         />
         <Spotlight
-          className="top-10 left-full h-[80vh] w-[50vh]"
+          className="top-10 left-full h-[60vh] w-[40vh] hidden sm:block"
           fill="purple"
         />
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vh]" fill="blue" />
       </div>
-      {/* Gradient Grid bg */}
-      <div className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.2] bg-grid-black-100/[0.2] flex items-center justify-center absolute top-0 left-0 ">
+
+      <div className="absolute inset-0 pointer-events-none">
         <div
           className={cn(
-            "absolute inset-0",
-            "[background-size:150px_150px]",
-            "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-            "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
+            "absolute inset-0 opacity-60",
+            "[background-size:80px_80px] sm:[background-size:120px_120px]",
+            "[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
           )}
         />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black-100"></div>
+        <div className="absolute inset-0 bg-black-100 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]" />
       </div>
-      {/* Display texts */}
-      <div className="flex justify-center relative my-20 z-10 ">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <h2 className="tracking-widest uppercase text-xs text-center text-blue-100 max-w-80 ">
-            My portfolio website
-          </h2>
-          <TextGenerateEffect
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Transforming Concepts into Digital Solutions"
-            duration={0.5}
-          />
-          {/* Typewriter */}
-          <div className="flex md:mt-4 justify-center items-center text-center gap-2 text-sm mt-4 md:mb-0 mb-7 lg:text-2xl ">
-            <div>
-              <p>
-                Hi I&apos;m <span className="font-bold">John Chloe,</span>
-              </p>
-              <HeroTypewriter />
-            </div>
+
+      <div className="section-container relative z-10 w-full">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-5 text-center sm:gap-6">
+          <p className="section-eyebrow">{hero.eyebrow}</p>
+          <h1 className="text-3xl font-bold leading-tight tracking-tight text-pretty sm:text-4xl md:text-5xl">
+            {hero.headline}
+          </h1>
+          <p className="max-w-lg text-sm leading-relaxed text-white-200 sm:text-base">
+            {hero.subheadline}
+          </p>
+          <div className="flex w-full max-w-xs flex-col gap-3 pt-1 sm:max-w-none sm:flex-row sm:justify-center">
+            <CtaButton href="/contact" variant="primary" className="w-full sm:w-auto">
+              Hire me
+            </CtaButton>
+            <CtaButton href="/#projects" variant="secondary" className="w-full sm:w-auto">
+              View work
+            </CtaButton>
           </div>
-          {/* Button */}
-          <a href="#projects" className="hover:cursor-pointer">
-            <MagicButton
-              title="Show my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
