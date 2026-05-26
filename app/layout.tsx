@@ -1,7 +1,6 @@
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 
@@ -43,12 +42,6 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        <Script
-          id="tawkto"
-          strategy="afterInteractive"
-          src="https://embed.tawk.to/69a4ebcf42b18b1c3efc626f/1jim3i92g"
-          crossOrigin="anonymous"
-        />
       </body>
     </html>
   );

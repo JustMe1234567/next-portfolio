@@ -12,7 +12,8 @@ export const site = {
 
 export const hero = {
   eyebrow: "WordPress · Shopify · Webflow",
-  headline: "Websites built on the platform you already use",
+  headlineLine1: "Websites that Convert,",
+  headlineLine2: "not just Exist.",
   subheadline:
     "Custom themes, storefronts, and Webflow sites—from design handoff to launch, with CMS setup your team can manage.",
 };
@@ -33,22 +34,43 @@ export const platforms = [
   {
     name: "WordPress",
     tagline: "Custom themes, ACF, WooCommerce, performance",
-    color: "from-[#21759b]/20 to-[#21759b]/5",
+    features: [
+      "Elementor & other page builders",
+      "WooCommerce & ACF setups",
+      "Speed & Core Web Vitals",
+    ],
+    color: "from-[#21759b]/25 to-[#21759b]/5",
     border: "border-[#21759b]/40",
+    accent: "#21759b",
+    icon: "wordpress" as const,
   },
   {
     name: "Shopify",
     tagline: "Theme customization, Liquid, storefront UX",
-    color: "from-[#95bf47]/20 to-[#95bf47]/5",
+    features: [
+      "Theme sections & Liquid",
+      "Checkout & product UX",
+      "Apps & conversion tweaks",
+    ],
+    color: "from-[#95bf47]/25 to-[#95bf47]/5",
     border: "border-[#95bf47]/40",
+    accent: "#95bf47",
+    icon: "shopify" as const,
   },
   {
     name: "Webflow",
     tagline: "Pixel-perfect builds, CMS, interactions & handoff",
-    color: "from-[#4353ff]/20 to-[#4353ff]/5",
+    features: [
+      "Figma-to-Webflow builds",
+      "CMS & collections",
+      "Client handoff & training",
+    ],
+    color: "from-[#4353ff]/25 to-[#4353ff]/5",
     border: "border-[#4353ff]/40",
+    accent: "#4353ff",
+    icon: "webflow" as const,
   },
-];
+] as const;
 
 export const about = {
   intro:
@@ -56,7 +78,7 @@ export const about = {
   image: site.profileImage,
   stats: [
     { number: 5, title: "Years Experience" },
-    { number: 15, title: "Sites Delivered" },
+    { number: 5, title: "Sites Delivered" },
     { number: 3, title: "Core Platforms" },
     { number: 100, title: "Client Focus", suffix: "%" },
   ],
