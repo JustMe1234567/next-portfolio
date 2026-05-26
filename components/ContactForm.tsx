@@ -13,6 +13,13 @@ const fieldClass =
 
 type Status = "idle" | "loading" | "success" | "error";
 
+const FALLBACK_ERROR =
+  "We couldn't send your message. Please try again or email me directly.";
+
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
 const ContactForm = ({ className = "" }: ContactFormProps) => {
   const [form, setForm] = useState({
     name: "",
@@ -35,30 +42,58 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
+
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+
+    if (!name || !email || !message) {
+      setStatus("error");
+      setErrorMessage("Please fill in your name, email, and message.");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
     setStatus("loading");
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, name, email, message }),
       });
 
-      const data = await res.json();
+      let data: { success?: boolean; message?: string } = {};
+
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error(FALLBACK_ERROR);
+      }
 
       if (!res.ok || !data.success) {
-        throw new Error(
-          data.message ||
-            "Could not save your message. Please try again or email me directly."
-        );
+        throw new Error(data.message || FALLBACK_ERROR);
       }
 
       setStatus("success");
       setForm({ name: "", email: "", platform: "WordPress", message: "" });
     } catch (err) {
       setStatus("error");
+
+      if (err instanceof TypeError) {
+        setErrorMessage(
+          "Couldn't connect. Check your internet and try again."
+        );
+        return;
+      }
+
       setErrorMessage(
-        err instanceof Error ? err.message : "Something went wrong."
+        err instanceof Error ? err.message : FALLBACK_ERROR
       );
     }
   };
