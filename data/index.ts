@@ -166,7 +166,7 @@ export const projects = [
   },
   {
     id: 7,
-    title: "Plant Buy",
+    title: "Plantittoo",
     des: "WooCommerce-ready WordPress shop with ACF, custom post types, Ajax filters, and mobile-first product browsing.",
     iconLists: [
       "/wordpress.svg",
@@ -175,7 +175,7 @@ export const projects = [
       "/cssLogo.svg",
       "/jsLogo.svg",
     ],
-    img: "/plantbuyimage.png",
+    img: "/plantittoo_desktop.png",
     link: "https://plantbuy.free.nf/",
     category: ["WordPress"],
     target: "_blank",

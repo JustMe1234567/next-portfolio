@@ -17,15 +17,33 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <article className="card-surface group flex h-full flex-col overflow-hidden rounded-xl border border-white/[0.08] transition hover:border-purple/30">
       <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={project.img}
-          alt={project.title}
-          width={480}
-          height={300}
-          className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
-        />
+        {project.live ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-full w-full"
+            aria-label={`Visit ${project.title}`}
+          >
+            <Image
+              src={project.img}
+              alt={project.title}
+              width={480}
+              height={300}
+              className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
+            />
+          </a>
+        ) : (
+          <Image
+            src={project.img}
+            alt={project.title}
+            width={480}
+            height={300}
+            className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
+          />
+        )}
         {project.live && (
-          <span className="absolute top-2 right-2 rounded-full border border-white/10 bg-black/70 px-2 py-0.5 text-[9px] font-medium uppercase text-white">
+          <span className="pointer-events-none absolute top-2 right-2 rounded-full border border-white/10 bg-black/70 px-2 py-0.5 text-[9px] font-medium uppercase text-white">
             Live
           </span>
         )}
