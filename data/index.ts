@@ -77,7 +77,7 @@ export const about = {
     "I build conversion-focused websites on WordPress, Shopify, and Webflow for brands that need a developer who ships fast, communicates clearly, and cares about business outcomes—not just pixels. From Figma-to-production builds and custom WordPress themes to Shopify storefront tweaks and Webflow CMS setups, I deliver maintainable sites your team can actually run.",
   image: site.profileImage,
   stats: [
-    { number: 5, title: "Years Experience" },
+    { number: 3, title: "Years Experience" },
     { number: 5, title: "Sites Delivered" },
     { number: 3, title: "Core Platforms" },
     { number: 100, title: "Client Focus", suffix: "%" },
