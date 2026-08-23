@@ -19,23 +19,20 @@ const RecentProjects = () => {
   }, [activeCategory]);
 
   return (
-    <Section id="projects" aria-labelledby="projects-heading" divider>
+    <Section id="projects" aria-labelledby="projects-heading" divider containerClassName="!max-w-[80vw]">
       <div className="section-stack">
-        <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeader
-            label="Projects"
-            title="Selected work"
-            description="WordPress themes and front-end builds for agencies and businesses."
-            titleId="projects-heading"
-            align="left"
-            className="max-w-lg !mx-0"
-          />
+        <SectionHeader
+          label="Projects"
+          title="Selected work"
+          description="WordPress themes and front-end builds for agencies and businesses."
+          titleId="projects-heading"
+        />
 
-          <div
-            className="flex flex-wrap gap-2"
-            role="tablist"
-            aria-label="Filter projects"
-          >
+        <div
+          className="flex flex-wrap justify-center gap-2"
+          role="tablist"
+          aria-label="Filter projects"
+        >
             {projectFilters.map((cat) => (
               <button
                 key={cat}
@@ -53,7 +50,6 @@ const RecentProjects = () => {
                 {cat}
               </button>
             ))}
-          </div>
         </div>
 
         <div className="relative">
@@ -66,7 +62,7 @@ const RecentProjects = () => {
               transition={{ duration: 0.15 }}
               className={cn(
                 "projects-grid-scroll overflow-y-auto overflow-x-hidden rounded-xl border border-white/[0.06] sm:rounded-2xl",
-                "max-h-[420px] sm:max-h-[460px] lg:max-h-[500px]"
+                "max-h-[680px] sm:max-h-[740px] lg:max-h-[700px]"
               )}
             >
               <ul className="grid list-none grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:gap-4 sm:p-4 lg:grid-cols-3">

@@ -5,6 +5,7 @@ export type Project = {
   id: number;
   title: string;
   des: string;
+  short: string;
   img: string;
   link: string;
   iconLists: string[];
@@ -14,9 +15,21 @@ export type Project = {
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
+  const typeLabels: Record<string, string> = {
+    WordPress: "WordPress Development",
+    Frontend: "Frontend Development",
+  };
+  const type = typeLabels[project.category[0]] ?? project.category[0];
+
   return (
     <article className="card-surface group flex h-full flex-col overflow-hidden rounded-xl border border-white/[0.08] transition hover:border-purple/30">
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div
+        className="animate-float relative aspect-[16/10] overflow-hidden"
+        style={{
+          animationDuration: `${1.5 + (project.id % 5) * 0.4}s`,
+          animationDelay: `${(project.id % 4) * -0.5}s`,
+        }}
+      >
         {project.live ? (
           <a
             href={project.link}
@@ -43,29 +56,18 @@ const ProjectCard = ({ project }: { project: Project }) => {
           />
         )}
         {project.live && (
-          <span className="pointer-events-none absolute top-2 right-2 rounded-full border border-white/10 bg-black/70 px-2 py-0.5 text-[9px] font-medium uppercase text-white">
+          <span className="pointer-events-none absolute top-2 right-2 rounded-full border border-white/10 bg-black/70 px-2 py-0.5 text-[9px] font-medium uppercase text-[#fff]">
             Live
           </span>
         )}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-3.5 sm:p-4">
-        <div className="flex flex-wrap gap-1">
-          {project.category.map((cat) => (
-            <span
-              key={cat}
-              className="rounded border border-purple/20 bg-purple/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase text-purple"
-            >
-              {cat}
-            </span>
-          ))}
-        </div>
-
-        <h3 className="text-sm font-bold text-white line-clamp-1 sm:text-base">
-          {project.title}
+        <h3 className="text-sm font-bold text-white line-clamp-2 sm:text-base">
+          {project.title} <span className="text-purple">&mdash; {type}</span>
         </h3>
-        <p className="line-clamp-2 flex-1 text-xs leading-relaxed text-white-200 sm:text-sm">
-          {project.des}
+        <p className="flex-1 text-xs leading-relaxed text-white-200 sm:text-sm">
+          {project.short}
         </p>
 
         <div className="flex items-center justify-between border-t border-white/[0.06] pt-3">
