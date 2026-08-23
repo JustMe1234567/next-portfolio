@@ -74,13 +74,13 @@ export const platforms = [
 
 export const about = {
   intro:
-    "I build conversion-focused websites on WordPress, Shopify, and Webflow for brands that need a developer who ships fast, communicates clearly, and cares about business outcomes—not just pixels. From Figma-to-production builds and custom WordPress themes to Shopify storefront tweaks and Webflow CMS setups, I deliver maintainable sites your team can actually run.",
+    "I help businesses turn outdated or difficult-to-manage websites into modern digital experiences. From Figma-to-production builds and custom WordPress solutions to Shopify storefront improvements and Webflow CMS setups, I create websites that look professional, perform well, and help teams manage their online presence with ease.",
   image: site.profileImage,
   stats: [
-    { number: 3, title: "Years Experience" },
-    { number: 5, title: "Sites Delivered" },
-    { number: 3, title: "Core Platforms" },
-    { number: 100, title: "Client Focus", suffix: "%" },
+    { number: 3, title: "Years Experience", suffix: "+" },
+    { number: 10, title: "Projects Completed", suffix: "+" },
+    { number: 3, title: "Core Platforms", suffix: "" },
+    { number: 100, title: "Reliable Delivery", suffix: "%" },
   ],
 };
 

@@ -1,4 +1,4 @@
-import { about, platforms } from "@/data";
+import { about } from "@/data";
 import Image from "next/image";
 import CtaButton from "./ui/CtaButton";
 import { Section } from "./ui/Section";
@@ -10,7 +10,7 @@ const AboutMe = () => {
       <div className="section-stack">
         <SectionHeader
           label="About"
-          title="CMS developer for hire"
+          title="WordPress, Shopify & Webflow specialist"
           description="WordPress, Shopify, and Webflow—shipped on time, built to last."
         />
 
@@ -27,17 +27,6 @@ const AboutMe = () => {
             {about.intro}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-2">
-            {platforms.map((p) => (
-              <span
-                key={p.name}
-                className="rounded-full border border-purple/30 bg-purple/10 px-3 py-1 text-xs font-medium text-purple"
-              >
-                {p.name}
-              </span>
-            ))}
-          </div>
-
           <div className="grid w-full max-w-md grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
             {about.stats.map((stat, index) => (
               <div key={index} className="flex flex-col items-center gap-0.5">
@@ -45,7 +34,7 @@ const AboutMe = () => {
                   {stat.number}
                   {"suffix" in stat ? stat.suffix : "+"}
                 </span>
-                <span className="text-center text-[11px] text-white-200 sm:text-xs">
+                <span className="whitespace-nowrap text-center text-[11px] text-white-200 sm:text-xs">
                   {stat.title}
                 </span>
               </div>
@@ -53,7 +42,7 @@ const AboutMe = () => {
           </div>
 
           <CtaButton href="/contact" variant="primary">
-            Hire me
+            Start a project
           </CtaButton>
         </div>
       </div>
