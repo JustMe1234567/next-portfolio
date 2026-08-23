@@ -14,6 +14,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CtaButton from "./CtaButton";
+import ThemeToggle from "./ThemeToggle";
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
@@ -147,6 +148,7 @@ export const FloatingNav = ({
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
             <CtaButton
               href="/contact"
               variant="primary"

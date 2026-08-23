@@ -2,7 +2,7 @@ import ContactForm from "@/components/ContactForm";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { contactPage, navItems, site, socialMedia } from "@/data";
-import Image from "next/image";
+import { SocialGlyph } from "@/components/ui/SocialGlyph";
 import Link from "next/link";
 import {
   FaArrowLeft,
@@ -80,7 +80,7 @@ export default function ContactPage() {
                   className="flex h-11 w-11 items-center justify-center rounded-lg border border-black-300 bg-black-200 transition hover:border-purple/40"
                   aria-label="Social profile"
                 >
-                  <Image src={info.img} alt="" width={24} height={24} />
+                  <SocialGlyph name={info.img.includes("link") ? "link" : "git"} className="h-5 w-5 text-purple" />
                 </a>
               ))}
             </div>

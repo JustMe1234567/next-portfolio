@@ -45,7 +45,7 @@ const AboutMe = () => {
                   {stat.number}
                   {"suffix" in stat ? stat.suffix : "+"}
                 </span>
-                <span className="text-center text-[11px] text-gray-400 sm:text-xs">
+                <span className="text-center text-[11px] text-white-200 sm:text-xs">
                   {stat.title}
                 </span>
               </div>

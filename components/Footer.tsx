@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FaEnvelope, FaLocationPin } from "react-icons/fa6";
 import CtaButton from "./ui/CtaButton";
 import { Section } from "./ui/Section";
+import { SocialGlyph } from "./ui/SocialGlyph";
 
 const contactLinks = [
   {
@@ -12,7 +13,7 @@ const contactLinks = [
     href: site.whatsapp,
     label: site.phone,
     icon: (
-      <Image src="/wha.svg" alt="" width={20} height={20} className="h-5 w-5" />
+      <SocialGlyph name="whatsapp" className="h-5 w-5 text-purple" />
     ),
     external: true,
   },
@@ -74,7 +75,7 @@ const Footer = () => {
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple/20 bg-black-200 transition hover:border-purple/50 hover:bg-purple/10"
               aria-label={info.link}
             >
-              <Image src={info.img} alt="" width={22} height={22} />
+              <SocialGlyph name={info.img.includes("link") ? "link" : "git"} className="h-5 w-5 text-purple" />
             </a>
           ))}
         </div>

@@ -73,7 +73,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             {project.iconLists.slice(0, 4).map((icon, i) => (
               <div
                 key={icon}
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#10132E]"
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-black-200"
                 style={{ zIndex: 4 - i }}
               >
                 <Image src={icon} alt="" width={14} height={14} className="h-3.5 w-3.5" />
