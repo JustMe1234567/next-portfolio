@@ -7,6 +7,7 @@
 
 @theme inline {
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-float: float 2s ease-in-out infinite;
 }
 
 @theme inline {
@@ -125,6 +126,15 @@
       transform: translate(-50%, -40%) scale(1);
     }
   }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
   @keyframes shimmer {
     from {
       background-position: 0 0;
