@@ -140,6 +140,7 @@ export const projects = [
     id: 9,
     title: "MindBody Wellness",
     des: "Custom WordPress theme with Tailwind v4, GSAP motion, and a drag-to-scroll testimonials slider for a mental health practice.",
+    short: "Mental health practice website",
     iconLists: ["/wordpress.svg", "/tail.svg", "/jsLogo.svg", "/htmlLogo.svg"],
     img: "/wellnesspathways.png",
     link: "http://wellnesspathways.free.nf",
@@ -150,6 +151,7 @@ export const projects = [
   {
     id: 8,
     title: "Smart Agency",
+    short: "Agency services website",
     des: "Agency WordPress theme with Tailwind—services, portfolio, and performance-tuned responsive layout.",
     iconLists: [
       "/wordpress.svg",
@@ -168,6 +170,7 @@ export const projects = [
     id: 7,
     title: "Plantittoo",
     des: "WooCommerce-ready WordPress shop with ACF, custom post types, Ajax filters, and mobile-first product browsing.",
+    short: "Plant shop WooCommerce",
     iconLists: [
       "/wordpress.svg",
       "/htmlLogo.svg",
@@ -184,6 +187,7 @@ export const projects = [
   {
     id: 1,
     title: "MediCare",
+    short: "Healthcare services website",
     des: "Figma-to-WordPress healthcare build with Elementor—pixel-perfect layout and fast static delivery.",
     img: "/medicareImg.jpg",
     iconLists: [
@@ -201,6 +205,7 @@ export const projects = [
   {
     id: 2,
     title: "Marci Realtor",
+    short: "Real estate listings website",
     des: "Real estate frontend with Tailwind and vanilla JS—refined UX, fully responsive, statically hosted.",
     img: "/marciImg.png",
     iconLists: [
@@ -218,6 +223,7 @@ export const projects = [
   {
     id: 3,
     title: "Lotus Assessment",
+    short: "Cannabis automation brand",
     des: "Figma-to-HTML WordPress frontend for a cannabis automation brand—precise desktop layout per spec.",
     img: "/cannabisAssessment.png",
     iconLists: [
