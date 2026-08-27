@@ -137,6 +137,24 @@ export const projectFilters = ["All", "WordPress", "Frontend"] as const;
 
 export const projects = [
   {
+    id: 11,
+    title: "Alora Designs",
+    des: "Next.js frontend for a jewelry brand—Tailwind for a refined, product-led showcase with smooth navigation and a responsive storefront.",
+    short: "Jewelry storefront",
+    iconLists: [
+      "/icons/next.svg",
+      "/icons/tail.svg",
+      "/icons/jsLogo.svg",
+      "/icons/htmlLogo.svg",
+      "/icons/cssLogo.svg",
+    ],
+    img: "/images/AloraDesign.png",
+    link: "https://aloura.vercel.app/",
+    category: ["Frontend"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 7,
     title: "Plantittoo",
     des: "WooCommerce-ready WordPress shop with ACF, custom post types, Ajax filters, and mobile-first product browsing.",
