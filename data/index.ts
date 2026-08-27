@@ -149,7 +149,7 @@ export const projects = [
       "/icons/cssLogo.svg",
     ],
     img: "/images/AloraDesign.png",
-    link: "https://aloura.vercel.app/",
+    link: "https://alourajewels.vercel.app/",
     category: ["Frontend"],
     target: "_blank",
     live: true,
