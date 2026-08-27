@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Hire John Chloe for WordPress custom themes, Shopify storefront work, and Webflow development. Agency-friendly communication, clear process, and conversion-focused builds.",
   icons: {
-    icon: "Montserra.jpg",
+    icon: "images/Montserra.jpg",
   },
 };
 

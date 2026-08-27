@@ -121,7 +121,7 @@ export const BentoGridItem = ({
           {/* for the github 3d globe */}
           {id === 2 && (
             <Image
-              src="/globePlain.jpg"
+              src="/images/globePlain.jpg"
               alt="Globe"
               // width={200}
               // height={100}
@@ -165,7 +165,7 @@ export const BentoGridItem = ({
           {id === 6 && (
             <div className="mt-5  lg:mt-0 z-11">
               <div className="flex justify-center items-center cursor-pointer">
-                <a href="/JohnChloe-Resume.pdf" title="Resume" target="_blank">
+                <a href="/docs/JohnChloe-Resume.pdf" title="Resume" target="_blank">
                   <MagicButton
                     title="Resume"
                     icon={<IoCopy />}

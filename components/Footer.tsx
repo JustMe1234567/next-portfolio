@@ -47,7 +47,7 @@ const Footer = () => {
             </h2>
 
             <Image
-              src="/mc.gif"
+              src="/images/mc.gif"
               alt=""
               width={100}
               height={100}
