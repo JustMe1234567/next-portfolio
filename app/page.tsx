@@ -1,4 +1,5 @@
 import AboutMe from "@/components/AboutMe";
+import FeaturedWorks from "@/components/FeaturedWorks";
 import Footer from "@/components/Footer";
 import HashScrollHandler from "@/components/HashScrollHandler";
 import Hero from "@/components/Hero";
@@ -15,6 +16,7 @@ export default function Home() {
       <FloatingNav navItems={navItems} />
       <Hero />
       <Platforms />
+      <FeaturedWorks />
       <AboutMe />
       <Process />
       <RecentProjects />
