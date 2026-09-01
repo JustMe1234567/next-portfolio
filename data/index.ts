@@ -133,9 +133,25 @@ export const processSteps = [
   },
 ];
 
-export const projectFilters = ["All", "WordPress", "Frontend"] as const;
+export const projectFilters = ["All", "Next.js", "WordPress", "Frontend"] as const;
 
 export const projects = [
+  {
+    id: 12,
+    title: "Horcasb Dental",
+    des: "Next.js website for a dental clinic—React, HTML, and CSS for a clean, professional showcase of services and patient-focused design.",
+    short: "Dental clinic website",
+    iconLists: [
+      "/icons/next.svg",
+      "/icons/htmlLogo.svg",
+      "/icons/cssLogo.svg",
+    ],
+    img: "/images/horcabasdental.png",
+    link: "https://horcabasdental.vercel.app/",
+    category: ["Next.js", "Frontend"],
+    target: "_blank",
+    live: true,
+  },
   {
     id: 11,
     title: "Alora Designs",
@@ -150,7 +166,7 @@ export const projects = [
     ],
     img: "/images/AloraDesign.png",
     link: "https://alourajewels.vercel.app/",
-    category: ["Frontend"],
+    category: ["Next.js", "Frontend"],
     target: "_blank",
     live: true,
   },

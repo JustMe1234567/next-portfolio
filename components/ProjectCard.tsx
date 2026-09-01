@@ -18,6 +18,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   const typeLabels: Record<string, string> = {
     WordPress: "WordPress Development",
     Frontend: "Frontend Development",
+    "Next.js": "Next.js Development",
   };
   const type = typeLabels[project.category[0]] ?? project.category[0];
 
