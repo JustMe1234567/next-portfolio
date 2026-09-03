@@ -20,7 +20,7 @@ const AboutMe = () => {
             alt="John Chloe profile"
             width={800}
             height={800}
-            className="h-32 w-32 rounded-2xl object-cover shadow-lg ring-2 ring-purple/20 sm:h-40 sm:w-40"
+            className="h-44 w-44 rounded-2xl object-cover shadow-lg ring-2 ring-purple/20 sm:h-52 sm:w-52 lg:h-100 lg:w-100"
           />
 
           <p className="text-center text-sm leading-relaxed text-white-200 sm:text-base">
