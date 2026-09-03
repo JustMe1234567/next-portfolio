@@ -24,6 +24,13 @@ const LoadingScreen = () => {
 
   return (
     <div className="loader-overlay" aria-hidden="true">
+      <div className="loader-word">
+        {Array.from("KLOWI").map((char, i) => (
+          <span key={i} style={{ "--i": i } as React.CSSProperties}>
+            {char}
+          </span>
+        ))}
+      </div>
       <div className="loader-glow" />
     </div>
   );
