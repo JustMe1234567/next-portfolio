@@ -154,7 +154,7 @@ export const FloatingNav = ({
               variant="primary"
               className="!min-h-[34px] shrink-0 !gap-1 !rounded-lg !px-2.5 !py-1.5 !text-xs sm:!min-h-[36px] sm:!px-3 sm:!text-sm"
             >
-              Hire me
+              Start a project
             </CtaButton>
 
             <button

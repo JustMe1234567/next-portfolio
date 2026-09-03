@@ -183,7 +183,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
         className="w-full mt-1"
         disabled={status === "loading"}
       >
-        {status === "loading" ? "Sending…" : "Send inquiry"}
+        {status === "loading" ? "Sending…" : "Contact me"}
       </CtaButton>
     </form>
   );

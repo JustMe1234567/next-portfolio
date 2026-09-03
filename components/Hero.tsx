@@ -44,7 +44,7 @@ const Hero = () => {
           </p>
           <div className="flex w-full max-w-xs flex-col gap-3 pt-1 sm:max-w-none sm:flex-row sm:justify-center lg:gap-4 lg:pt-2">
             <CtaButton href="/contact" variant="primary" className="w-full sm:w-auto">
-              Hire me
+              Start a project
             </CtaButton>
             <CtaButton href="/#projects" variant="secondary" className="w-full sm:w-auto">
               View work
