@@ -1,5 +1,6 @@
 import { hero } from "@/data";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
 import CtaButton from "./ui/CtaButton";
 import { Spotlight } from "./ui/Spotlight";
 
@@ -51,6 +52,17 @@ const Hero = () => {
             </CtaButton>
           </div>
         </div>
+      </div>
+
+      <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1.5 sm:bottom-7">
+        <span className="relative flex items-center text-[11px] font-semibold uppercase tracking-[0.3em] text-white-200">
+          Scroll down
+          <span className="absolute -bottom-1.5 left-1/2 flex h-1.5 w-1.5 -translate-x-1/2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-purple" />
+          </span>
+        </span>
+        <ChevronDown className="h-4 w-4 animate-bounce text-white-200" />
       </div>
     </section>
   );

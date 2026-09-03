@@ -1,4 +1,5 @@
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import LoadingScreen from "@/components/LoadingScreen";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -34,6 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <GoogleAnalytics />
+        <LoadingScreen />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
