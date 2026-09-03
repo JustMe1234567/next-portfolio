@@ -137,6 +137,23 @@ export const projectFilters = ["All", "Next.js", "WordPress", "Frontend"] as con
 
 export const projects = [
   {
+    id: 13,
+    title: "Santech",
+    des: "Custom WordPress theme for a machinery company—HTML, CSS, JavaScript, and PHP for a robust, service-led showcase of heavy equipment and industrial solutions.",
+    short: "Machinery company website",
+    iconLists: [
+      "/icons/wordpress.svg",
+      "/icons/htmlLogo.svg",
+      "/icons/cssLogo.svg",
+      "/icons/jsLogo.svg",
+    ],
+    img: "/images/santech.webp",
+    link: "https://santech.dreamhosters.com/",
+    category: ["WordPress"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 12,
     title: "Horcasb Dental",
     des: "Next.js website for a dental clinic—React, HTML, and CSS for a clean, professional showcase of services and patient-focused design.",

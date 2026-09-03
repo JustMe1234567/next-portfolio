@@ -4,7 +4,7 @@ import { Section } from "./ui/Section";
 import { SectionHeader } from "./ui/SectionHeader";
 
 const FeaturedWorks = () => {
-  const featured = projects.filter((p) => [7, 10, 12].includes(p.id));
+  const featured = projects.filter((p) => [7, 10, 13].includes(p.id));
 
   return (
     <Section
@@ -20,7 +20,7 @@ const FeaturedWorks = () => {
               A few of my <span className="text-purple">favorite builds</span>
             </>
           }
-          description="Handpicked projects—Plantittoo, Ursula Jewelry, and Horcasb Dental."
+          description="Handpicked projects—Plantittoo, Ursula Jewelry, and Santech."
           titleId="featured-works-heading"
         />
 
