@@ -30,15 +30,21 @@ type Status = "idle" | "loading" | "success" | "error";
 const FALLBACK_ERROR =
   "We couldn't send your message. Please try again or email me directly.";
 
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
 const ContactForm = ({ className = "" }: ContactFormProps) => {
   const [form, setForm] = useState<{
     name: string;
+    email: string;
     service: string;
     customService: string;
     budget: string;
     message: string;
   }>({
     name: "",
+    email: "",
     service: SERVICE_OPTIONS[0],
     customService: "",
     budget: "",
@@ -63,15 +69,24 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
     setErrorMessage("");
 
     const name = form.name.trim();
+    const email = form.email.trim();
     const service = isCustomService
       ? form.customService.trim()
       : form.service;
     const budget = form.budget.trim();
     const message = form.message.trim();
 
-    if (!name || !service || !message) {
+    if (!name || !email || !service || !message) {
       setStatus("error");
-      setErrorMessage("Please fill in your name, the service, and a message.");
+      setErrorMessage(
+        "Please fill in your name, email, the service, and a message."
+      );
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
       return;
     }
 
@@ -80,6 +95,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
     try {
       await createContactSubmission({
         name,
+        email,
         service,
         budget,
         message,
@@ -89,6 +105,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
       setStatus("success");
       setForm({
         name: "",
+        email: "",
         service: SERVICE_OPTIONS[0],
         customService: "",
         budget: "",
@@ -136,7 +153,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
       onSubmit={handleSubmit}
       className={`flex w-full flex-col gap-5 ${className}`}
     >
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-3">
         <div>
           <label htmlFor="cf-name" className={labelClass}>
             Name
@@ -147,6 +164,23 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
             name="name"
             placeholder="Your full name"
             value={form.name}
+            onChange={handleChange}
+            required
+            disabled={status === "loading"}
+            className={fieldClass}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="cf-email" className={labelClass}>
+            Email
+          </label>
+          <input
+            id="cf-email"
+            type="email"
+            name="email"
+            placeholder="Work email"
+            value={form.email}
             onChange={handleChange}
             required
             disabled={status === "loading"}
