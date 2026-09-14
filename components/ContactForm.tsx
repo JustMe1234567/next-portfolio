@@ -2,33 +2,52 @@
 
 import { site } from "@/data";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import CtaButton from "./ui/CtaButton";
+import { createContactSubmission } from "@/lib/appwrite-client";
 
 type ContactFormProps = {
   className?: string;
 };
 
+const SERVICE_OPTIONS = [
+  "WordPress Website",
+  "Shopify Store",
+  "Webflow Website",
+  "Redesign",
+  "Maintenance & Support",
+] as const;
+
+const SOURCE = "vercel portfolio";
+
 const fieldClass =
-  "w-full min-h-[48px] rounded-xl border border-black-300 bg-black-200 px-4 py-3 text-sm sm:text-base text-white outline-none transition placeholder:text-white/40 focus:border-purple/50 disabled:opacity-50";
+  "w-full rounded-xl border border-black-300 bg-black-200 px-4 py-3 text-sm sm:text-base text-white outline-none transition placeholder:text-white-200/70 focus:border-purple/50 focus:ring-2 focus:ring-purple/20 disabled:opacity-50";
+
+const labelClass = "mb-1.5 block text-sm font-medium text-white-200";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 const FALLBACK_ERROR =
   "We couldn't send your message. Please try again or email me directly.";
 
-function isValidEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
-
 const ContactForm = ({ className = "" }: ContactFormProps) => {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    name: string;
+    service: string;
+    customService: string;
+    budget: string;
+    message: string;
+  }>({
     name: "",
-    email: "",
-    platform: "WordPress",
+    service: SERVICE_OPTIONS[0],
+    customService: "",
+    budget: "",
     message: "",
   });
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const isCustomService = form.service === "Others";
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -44,44 +63,37 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
     setErrorMessage("");
 
     const name = form.name.trim();
-    const email = form.email.trim();
+    const service = isCustomService
+      ? form.customService.trim()
+      : form.service;
+    const budget = form.budget.trim();
     const message = form.message.trim();
 
-    if (!name || !email || !message) {
+    if (!name || !service || !message) {
       setStatus("error");
-      setErrorMessage("Please fill in your name, email, and message.");
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      setStatus("error");
-      setErrorMessage("Please enter a valid email address.");
+      setErrorMessage("Please fill in your name, the service, and a message.");
       return;
     }
 
     setStatus("loading");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, name, email, message }),
+      await createContactSubmission({
+        name,
+        service,
+        budget,
+        message,
+        source: SOURCE,
       });
 
-      let data: { success?: boolean; message?: string } = {};
-
-      try {
-        data = await res.json();
-      } catch {
-        throw new Error(FALLBACK_ERROR);
-      }
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || FALLBACK_ERROR);
-      }
-
       setStatus("success");
-      setForm({ name: "", email: "", platform: "WordPress", message: "" });
+      setForm({
+        name: "",
+        service: SERVICE_OPTIONS[0],
+        customService: "",
+        budget: "",
+        message: "",
+      });
     } catch (err) {
       setStatus("error");
 
@@ -122,51 +134,106 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex w-full flex-col gap-4 sm:gap-5 ${className}`}
+      className={`flex w-full flex-col gap-5 ${className}`}
     >
-      <input
-        type="text"
-        name="name"
-        placeholder="Your name"
-        value={form.name}
-        onChange={handleChange}
-        required
-        disabled={status === "loading"}
-        className={fieldClass}
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Work email"
-        value={form.email}
-        onChange={handleChange}
-        required
-        disabled={status === "loading"}
-        className={fieldClass}
-      />
-      <select
-        name="platform"
-        value={form.platform}
-        onChange={handleChange}
-        disabled={status === "loading"}
-        className={fieldClass}
-        aria-label="Project platform"
-      >
-        <option value="WordPress">WordPress</option>
-        <option value="Shopify">Shopify</option>
-        <option value="Webflow">Webflow</option>
-        <option value="Not sure yet">Not sure yet</option>
-      </select>
-      <textarea
-        name="message"
-        placeholder="Project goals, timeline, and links (Figma, current site, etc.)"
-        rows={5}
-        value={form.message}
-        onChange={handleChange}
-        required
-        disabled={status === "loading"}
-        className={`${fieldClass} min-h-[140px] resize-y`}
-      />
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="cf-name" className={labelClass}>
+            Name
+          </label>
+          <input
+            id="cf-name"
+            type="text"
+            name="name"
+            placeholder="Your full name"
+            value={form.name}
+            onChange={handleChange}
+            required
+            disabled={status === "loading"}
+            className={fieldClass}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="cf-service" className={labelClass}>
+            Service
+          </label>
+          <div className="relative">
+            <select
+              id="cf-service"
+              name="service"
+              value={form.service}
+              onChange={handleChange}
+              disabled={status === "loading"}
+              className={`${fieldClass} appearance-none pr-10`}
+            >
+              {SERVICE_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+              <option value="Others">Others</option>
+            </select>
+            <ChevronDown
+              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white-200"
+              aria-hidden
+            />
+          </div>
+        </div>
+      </div>
+
+      {isCustomService && (
+        <div>
+          <label htmlFor="cf-custom-service" className={labelClass}>
+            Tell us the service you need
+          </label>
+          <input
+            id="cf-custom-service"
+            type="text"
+            name="customService"
+            placeholder="e.g. Landing page for a startup"
+            value={form.customService}
+            onChange={handleChange}
+            required
+            disabled={status === "loading"}
+            className={fieldClass}
+          />
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="cf-budget" className={labelClass}>
+          Budget
+        </label>
+        <input
+          id="cf-budget"
+          type="text"
+          name="budget"
+          inputMode="numeric"
+          placeholder="e.g. $500 – $1,500"
+          value={form.budget}
+          onChange={handleChange}
+          disabled={status === "loading"}
+          className={fieldClass}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="cf-message" className={labelClass}>
+          Message
+        </label>
+        <textarea
+          id="cf-message"
+          name="message"
+          placeholder="Project goals, timeline, and links (Figma, current site, etc.)"
+          rows={5}
+          value={form.message}
+          onChange={handleChange}
+          required
+          disabled={status === "loading"}
+          className={`${fieldClass} min-h-[140px] resize-y`}
+        />
+      </div>
 
       {status === "error" && (
         <p className="text-sm text-red-400" role="alert">
