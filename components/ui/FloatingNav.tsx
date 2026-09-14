@@ -81,15 +81,15 @@ export const FloatingNav = ({
   navItems: { name: string; link: string }[];
   className?: string;
 }) => {
-  const { scrollYProgress } = useScroll();
+  const { scrollY } = useScroll();
   const [visible, setVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  useMotionValueEvent(scrollYProgress, "change", (current) => {
+  useMotionValueEvent(scrollY, "change", (current) => {
     if (typeof current === "number") {
-      const direction = current! - scrollYProgress.getPrevious()!;
-      if (scrollYProgress.get() < 0.03) {
+      const direction = current! - scrollY.getPrevious()!;
+      if (scrollY.get() < 200) {
         setVisible(true);
       } else {
         setVisible(direction < 0);
