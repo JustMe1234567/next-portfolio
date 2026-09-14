@@ -17,7 +17,7 @@ export default function ContactPage() {
     <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-black-100 text-white">
       <FloatingNav navItems={navItems} />
 
-      <div className="section-container flex-1 max-w-5xl pt-20 pb-10 sm:pt-24 sm:pb-12">
+      <div className="section-container flex-1 max-w-5xl lg:max-w-none lg:w-[80vw] pt-20 pb-10 sm:pt-24 sm:pb-12">
         <Link
           href="/"
           className="mb-8 sm:mb-10 inline-flex min-h-[44px] items-center gap-2 text-sm text-white-200 transition hover:text-purple"
