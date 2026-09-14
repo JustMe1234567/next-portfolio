@@ -89,7 +89,7 @@ export const FloatingNav = ({
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
       const direction = current! - scrollYProgress.getPrevious()!;
-      if (scrollYProgress.get() < 0.005) {
+      if (scrollYProgress.get() < 0.03) {
         setVisible(true);
       } else {
         setVisible(direction < 0);
@@ -115,7 +115,7 @@ export const FloatingNav = ({
       <motion.header
         initial={{ opacity: 1, y: -100 }}
         animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.5 }}
         className={cn(
           "fixed z-[5000] top-3 sm:top-5 inset-x-3 sm:inset-x-4 md:inset-x-6 lg:inset-x-auto lg:left-1/2 lg:-translate-x-1/2 lg:max-w-4xl lg:w-full",
           className
