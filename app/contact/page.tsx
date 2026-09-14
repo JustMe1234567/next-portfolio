@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import CopyValue from "@/components/ui/CopyValue";
 import { contactPage, navItems, site, socialMedia } from "@/data";
 import { SocialGlyph } from "@/components/ui/SocialGlyph";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import {
   FaArrowLeft,
   FaEnvelope,
   FaLocationPin,
-  FaPhone,
+  FaWhatsapp,
 } from "react-icons/fa6";
 
 export default function ContactPage() {
@@ -50,20 +51,17 @@ export default function ContactPage() {
             </ul>
 
             <div className="space-y-4 text-sm sm:text-base">
-              <a
-                href={`mailto:${site.email}`}
-                className="flex min-h-[44px] items-center gap-3 text-white-200 transition hover:text-purple"
-              >
-                <FaEnvelope className="shrink-0" />
-                {site.email}
-              </a>
-              <a
-                href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="flex min-h-[44px] items-center gap-3 text-white-200 transition hover:text-purple"
-              >
-                <FaPhone className="shrink-0" />
-                {site.phone}
-              </a>
+              <CopyValue
+                label="email"
+                icon={<FaEnvelope className="shrink-0" />}
+                value={site.email}
+              />
+              <CopyValue
+                label="phone number"
+                icon={<FaWhatsapp className="shrink-0" />}
+                value={site.phone}
+                copyValue={site.phone.replace(/\s/g, "")}
+              />
               <div className="flex min-h-[44px] items-center gap-3 text-white-200">
                 <FaLocationPin className="shrink-0" />
                 {site.location}

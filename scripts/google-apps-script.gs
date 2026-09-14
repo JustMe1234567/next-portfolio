@@ -16,6 +16,7 @@ function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var name = "";
+    var email = "";
     var service = "";
     var budget = "";
     var message = "";
@@ -27,6 +28,7 @@ function doPost(e) {
       if (contentType.indexOf("application/json") > -1) {
         var json = JSON.parse(e.postData.contents);
         name = json.name || "";
+        email = json.email || "";
         service = json.service || "";
         budget = json.budget || "";
         message = json.message || "";
@@ -34,6 +36,7 @@ function doPost(e) {
       } else {
         var params = e.parameter;
         name = params.name || "";
+        email = params.email || "";
         service = params.service || "";
         budget = params.budget || "";
         message = params.message || "";
@@ -41,13 +44,14 @@ function doPost(e) {
       }
     } else if (e.parameter) {
       name = e.parameter.name || "";
+      email = e.parameter.email || "";
       service = e.parameter.service || "";
       budget = e.parameter.budget || "";
       message = e.parameter.message || "";
       source = e.parameter.source || "vercel portfolio";
     }
 
-    sheet.appendRow([new Date(), name, service, budget, message, source]);
+    sheet.appendRow([new Date(), name, email, service, budget, message, source]);
 
     return ContentService.createTextOutput(
       JSON.stringify({ success: true })

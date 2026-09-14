@@ -19,6 +19,7 @@ export function pingAppwrite() {
 
 export type ContactSubmission = {
   name: string;
+  email: string;
   service: string;
   budget: string;
   message: string;
