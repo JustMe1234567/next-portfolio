@@ -2,8 +2,8 @@
 
 import { site } from "@/data";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import CtaButton from "./ui/CtaButton";
+import Select from "./ui/Select";
 import { createContactSubmission } from "@/lib/appwrite-client";
 
 type ContactFormProps = {
@@ -153,7 +153,7 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
       onSubmit={handleSubmit}
       className={`flex w-full flex-col gap-5 ${className}`}
     >
-      <div className="grid gap-5 sm:grid-cols-3">
+      <div className="flex flex-col gap-5">
         <div>
           <label htmlFor="cf-name" className={labelClass}>
             Name
@@ -192,27 +192,16 @@ const ContactForm = ({ className = "" }: ContactFormProps) => {
           <label htmlFor="cf-service" className={labelClass}>
             Service
           </label>
-          <div className="relative">
-            <select
-              id="cf-service"
-              name="service"
-              value={form.service}
-              onChange={handleChange}
-              disabled={status === "loading"}
-              className={`${fieldClass} appearance-none pr-10`}
-            >
-              {SERVICE_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-              <option value="Others">Others</option>
-            </select>
-            <ChevronDown
-              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white-200"
-              aria-hidden
-            />
-          </div>
+          <Select
+            id="cf-service"
+            value={form.service}
+            options={[...SERVICE_OPTIONS, "Others"]}
+            onChange={(value) => {
+              setForm((prev) => ({ ...prev, service: value }));
+              if (status === "error") setStatus("idle");
+            }}
+            disabled={status === "loading"}
+          />
         </div>
       </div>
 
