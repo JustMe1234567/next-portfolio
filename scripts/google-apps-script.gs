@@ -16,9 +16,10 @@ function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var name = "";
-    var email = "";
-    var platform = "";
-    var msg = "";
+    var service = "";
+    var budget = "";
+    var message = "";
+    var source = "";
 
     if (e.postData && e.postData.contents) {
       var contentType = e.postData.type || "";
@@ -26,24 +27,27 @@ function doPost(e) {
       if (contentType.indexOf("application/json") > -1) {
         var json = JSON.parse(e.postData.contents);
         name = json.name || "";
-        email = json.email || "";
-        platform = json.platform || "";
-        msg = json.message || "";
+        service = json.service || "";
+        budget = json.budget || "";
+        message = json.message || "";
+        source = json.source || "vercel portfolio";
       } else {
         var params = e.parameter;
         name = params.name || "";
-        email = params.email || "";
-        platform = params.platform || "";
-        msg = params.message || "";
+        service = params.service || "";
+        budget = params.budget || "";
+        message = params.message || "";
+        source = params.source || "vercel portfolio";
       }
     } else if (e.parameter) {
       name = e.parameter.name || "";
-      email = e.parameter.email || "";
-      platform = e.parameter.platform || "";
-      msg = e.parameter.message || "";
+      service = e.parameter.service || "";
+      budget = e.parameter.budget || "";
+      message = e.parameter.message || "";
+      source = e.parameter.source || "vercel portfolio";
     }
 
-    sheet.appendRow([new Date(), name, email, platform, msg]);
+    sheet.appendRow([new Date(), name, service, budget, message, source]);
 
     return ContentService.createTextOutput(
       JSON.stringify({ success: true })
@@ -58,6 +62,6 @@ function doPost(e) {
 function setupHeaders() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Timestamp", "Name", "Email", "Platform", "Message"]);
+    sheet.appendRow(["Timestamp", "Name", "Service", "Budget", "Message", "Source"]);
   }
 }
