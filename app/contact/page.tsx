@@ -26,7 +26,7 @@ export default function ContactPage() {
           Back to portfolio
         </Link>
 
-        <div className="grid items-start gap-8 lg:grid-cols-3 lg:gap-10">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-6">
             <SectionHeader
               label="Contact"
@@ -84,7 +84,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="card-surface rounded-2xl sm:rounded-3xl border border-white/[0.1] p-5 sm:p-6 md:p-8 lg:p-10 space-y-6 lg:col-span-2">
+          <div className="card-surface rounded-2xl sm:rounded-3xl border border-white/[0.1] p-5 sm:p-6 md:p-8 lg:p-10 space-y-6">
             <div className="space-y-2">
               <h2 className="text-xl sm:text-2xl font-semibold">Project details</h2>
               <p className="text-sm text-white-200 leading-relaxed">
