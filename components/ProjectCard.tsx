@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import CodexIcon from "./ui/CodexIcon";
 
 export type Project = {
   id: number;
@@ -79,7 +80,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-black-200"
                 style={{ zIndex: 4 - i }}
               >
-                <Image src={icon} alt="" width={14} height={14} className="h-3.5 w-3.5" />
+                {icon === "/icons/codex-openai-mono.svg" ? (
+                  <CodexIcon className="h-3.5 w-3.5 text-foreground" />
+                ) : (
+                  <Image src={icon} alt="" width={14} height={14} className="h-3.5 w-3.5" />
+                )}
               </div>
             ))}
           </div>

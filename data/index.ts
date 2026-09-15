@@ -137,6 +137,23 @@ export const projectFilters = ["All", "Next.js", "WordPress", "Frontend"] as con
 
 export const projects = [
   {
+    id: 14,
+    title: "Gorg Cafe",
+    des: "Frontend cafe website built with Tailwind, HTML, and CSS, with Codex-assisted development for a warm, modern coffee shop experience.",
+    short: "Coffee shop website",
+    iconLists: [
+      "/icons/tail.svg",
+      "/icons/htmlLogo.svg",
+      "/icons/cssLogo.svg",
+      "/icons/codex-openai-mono.svg",
+    ],
+    img: "/images/gorg-cafe.png",
+    link: "https://gorgcafe.netlify.app/",
+    category: ["Frontend"],
+    target: "_blank",
+    live: true,
+  },
+  {
     id: 13,
     title: "Santech",
     des: "Custom WordPress theme for a machinery company—HTML, CSS, JavaScript, and PHP for a robust, service-led showcase of heavy equipment and industrial solutions.",
